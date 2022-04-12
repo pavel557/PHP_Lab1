@@ -19,14 +19,14 @@
             $this->message = $message;
         }
 
-        public function GetMessage()
+        public function getMessage()
         {
             return $this->message;
         }
 
-        public function GetUserTimeCreation()
+        public function getUserTimeCreation()
         {
-            return $this->user->GetTimeCreation();
+            return $this->user->getTimeCreation();
         }
 
         

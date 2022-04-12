@@ -9,16 +9,17 @@
     use Symfony\Component\Validator\Constraints\NotBlank;
     use Symfony\Component\Validator\Validation;
 
-    function UserValidation(User $user)
+    function userValidation(User $user)
     {
-        $validator = Validation::createValidatorBuilder()->addMethodMapping('loadValidatorMetadata')
-        ->getValidator();
+        $validator = Validation::createValidatorBuilder()->addMethodMapping('loadValidatorMetadata')->getValidator();
         $violations = $validator->validate($user);
 
         echo "Valodation user:<br>";
 
-        if (count($violations) > 0) {
-            foreach ($violations as $violation) {
+        if (count($violations) > 0) 
+        {
+            foreach ($violations as $violation) 
+            {
                 echo $violation->getMessage()."<br>";
             }
         }
@@ -26,7 +27,7 @@
         {
             echo "User is valid<br>";
         }
-        echo $user->GetTimeCreation(). "<br>";
+        echo $user->getTimeCreation(). "<br>";
     }   
 
     //Данные пользователя валидны
@@ -36,25 +37,26 @@
     //Имя слишком длинное, пароль слишком короткий, почта введена неправильно
     $user3 = new User(1 ,"Antondldldldldldldldldlldldldldld", "A", "c4");
 
-    UserValidation($user1);
-    UserValidation($user2);
-    UserValidation($user3);
+    userValidation($user1);
+    userValidation($user2);
+    userValidation($user3);
 
     $comments = array();
-    for ($i = 0; $i < 5; $i++) {
+    for ($i = 0; $i < 5; $i++) 
+    {
         $u = new User($i, "UserU", "A.t@gmail.com", "c4cdls");
         $commetns[$i] = new Comment($u, "comment $i");
     }
 
     $date = $_POST['date'];
 
-    foreach ($commetns as $c) {
-        $commetn_user_date = $c->GetUserTimeCreation();
+    foreach ($commetns as $c) 
+    {
+        $commentDate = $c->getUserTimeCreation();
         
-        if (strtotime($commetn_user_date) > strtotime($date))
+        if (strtotime($commentDate) > strtotime($date))
         {
-            echo $c->GetMessage() . ' user time:' . $c->GetUserTimeCreation() . '<br>';
+            echo $c->getMessage() . ' user time:' . $c->getUserTimeCreation() . '<br>';
         }
-        
     }
     

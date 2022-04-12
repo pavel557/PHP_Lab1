@@ -24,7 +24,7 @@
             $this->timeCreation = date("F j, Y, g:i a");
         }
 
-        public function GetTimeCreation()
+        public function getTimeCreation()
         {
             return $this->timeCreation;
         }
